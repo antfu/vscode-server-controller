@@ -4,7 +4,7 @@
 
 > You may NOT need to install the extension directly. This is mainly for tooling integrations.
 
-Start a local server for controlling the VS Code instance.
+Start a local server to control the VS Code instance from external apps.
 
 Port of the server will be stored under `.vscode/.server-controller-port.log` in the root of the current workspace.
 
@@ -17,6 +17,10 @@ Open a file or folder in the current VS Code instance.
 Required query parameters:
 
 - `path`: the path to open
+
+## Use Cases
+
+- [Nuxt DevTools](https://github.com/nuxt/devtools/) uses this extension to do "Open in Editor" feature for embedded VS Code: https://github.com/nuxt/devtools/pull/207
 
 ## Sponsors
 
