@@ -17,7 +17,7 @@ export async function activate(ctx: ExtensionContext) {
   }
 
   const app = createApp()
-  app.use('/open', eventHandler((ctx) => {
+  app.use('/open', eventHandler(async (ctx) => {
     const query = getQuery(ctx)
     if (!query.path)
       return { status: 'error', message: 'No path provided' }
@@ -26,10 +26,10 @@ export async function activate(ctx: ExtensionContext) {
 
     logger.appendLine(`Open ${file}:${line}:${column}`)
 
-    workspace.openTextDocument(file)
+    await workspace.openTextDocument(file)
       .then(doc => window.showTextDocument(doc))
       .then((editor) => {
-        const pos = new Position(+line, +column)
+        const pos = new Position(+line - 1, +column - 1)
         editor.revealRange(new Range(pos, pos))
         editor.selection = new Selection(pos, pos)
       })
