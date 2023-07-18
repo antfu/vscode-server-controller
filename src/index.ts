@@ -45,7 +45,7 @@ export async function activate(ctx: ExtensionContext) {
     },
   })
 
-  const port = await getPort({ port: 13452, portRange: [9000, 15000] })
+  const port = await getPort({ port: 13452, portRange: [9145, 15000] })
 
   server.listen(port, () => {
     logger.appendLine(`Server listening on port ${port}`)
